@@ -17,7 +17,7 @@ dill==0.3.4
 docformatter==1.4
 docutils==0.15.2
 emoji==1.2.0
-faiss==1.7.1
+faiss==1.5.3
 filelock==3.0.12
 flake8==3.8.3
 flake8-bugbear==20.1.4
@@ -54,8 +54,8 @@ markdown-it-py==0.5.3
 MarkupSafe==2.0.0a1
 matplotlib-inline==0.1.2
 mccabe==0.6.1
-mkl-fft==1.1.0
-mkl-random==1.1.1
+mkl-fft==1.2.0
+mkl-random==1.2.0
 mkl-service==2.3.0
 more-itertools==8.5.0
 multiprocess==0.70.12.2
