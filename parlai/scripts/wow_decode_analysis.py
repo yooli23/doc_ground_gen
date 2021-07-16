@@ -145,6 +145,7 @@ def _eval_single_world(opt, agent, task):
     
     list_topic = []
     list_last_sentence = []
+    list_context = []
     list_checked_sentence = []
     list_eval_label = []
     list_generated_sentence = []
@@ -165,6 +166,7 @@ def _eval_single_world(opt, agent, task):
                 response = responses[idx]
                 topic = act.get('title', None)
                 last_sentence = act.get('text', None)
+                context = act.get('context', [])
                 checked_sentence = act.get('checked_sentence', None)
                 eval_sentences = act.get('eval_labels', [])
                 eval_sentence = None
@@ -180,6 +182,7 @@ def _eval_single_world(opt, agent, task):
 
                 list_topic.append(topic)
                 list_last_sentence.append(last_sentence)
+                list_context.append(context)
                 list_checked_sentence.append(checked_sentence)
                 list_eval_label.append(eval_sentence)
                 list_generated_sentence.append(generated_sentence)
@@ -190,7 +193,7 @@ def _eval_single_world(opt, agent, task):
                 report.get('exs', 0), min(max_cnt, total_cnt), report
             )
             logging.info(text)
-    save_data = {'topic': list_topic, 'last_sentence':list_last_sentence, 'checked_sentence': list_checked_sentence, 'eval_label':list_eval_label, 'generated_sentence':list_generated_sentence}
+    save_data = {'topic': list_topic, 'last_sentence':list_last_sentence, 'context': list_context, 'checked_sentence': list_checked_sentence, 'eval_label':list_eval_label, 'generated_sentence':list_generated_sentence}
     saved_df = pd.DataFrame(save_data)
     saved_df.to_csv(os.path.join(os.environ["AMLT_OUTPUT_DIR"],"test.csv"))
 
