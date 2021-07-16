@@ -451,6 +451,7 @@ class WizardDialogKnowledgeTeacher(WizardOfWikipediaTeacher):
 
         action = {
             'id': 'WizardDialogKnowledgeTeacher',
+            'episode_idx': episode_idx,
             'text': text,
             'context': context,
             'labels': labels,

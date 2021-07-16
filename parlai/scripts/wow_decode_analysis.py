@@ -143,6 +143,7 @@ def _eval_single_world(opt, agent, task):
     # save csv file
     import pandas as pd
     
+    list_episode_idx = []
     list_topic = []
     list_last_sentence = []
     list_context = []
@@ -164,6 +165,7 @@ def _eval_single_world(opt, agent, task):
             for idx in range(len(acts)):
                 act = acts[idx]
                 response = responses[idx]
+                episode_idx = act.get('episode_idx', None)
                 topic = act.get('title', None)
                 last_sentence = act.get('text', None)
                 context = act.get('context', [])
@@ -180,6 +182,7 @@ def _eval_single_world(opt, agent, task):
                 # print(eval_sentence)
                 # print(generated_sentence)
 
+                list_episode_idx.append(episode_idx)
                 list_topic.append(topic)
                 list_last_sentence.append(last_sentence)
                 list_context.append(context)
@@ -193,7 +196,7 @@ def _eval_single_world(opt, agent, task):
                 report.get('exs', 0), min(max_cnt, total_cnt), report
             )
             logging.info(text)
-    save_data = {'topic': list_topic, 'last_sentence':list_last_sentence, 'context': list_context, 'checked_sentence': list_checked_sentence, 'eval_label':list_eval_label, 'generated_sentence':list_generated_sentence}
+    save_data = {'episode_idx': list_episode_idx, 'topic': list_topic, 'last_sentence':list_last_sentence, 'context': list_context, 'checked_sentence': list_checked_sentence, 'eval_label':list_eval_label, 'generated_sentence':list_generated_sentence}
     saved_df = pd.DataFrame(save_data)
     saved_df.to_csv("test.csv")
 
