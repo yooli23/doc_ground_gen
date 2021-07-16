@@ -93,7 +93,7 @@ def _get_chosen_title_and_sent(wizard_entry, k_dict):
 def _get_context(dialog, idx):
     ret_context = []
     for i in range(idx):
-        ret_context.append(dialog['text'])
+        ret_context.append(dialog[i]['text'])
     return ret_context
 
 
