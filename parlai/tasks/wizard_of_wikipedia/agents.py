@@ -90,6 +90,12 @@ def _get_chosen_title_and_sent(wizard_entry, k_dict):
 
     return title, sentence
 
+def _get_context(dialog, idx):
+    ret_context = []
+    for i in range(idx):
+        ret_context.append(dialog['text'])
+    return ret_context
+
 
 def _path(opt, split='random_split'):
     build(opt)
@@ -411,6 +417,9 @@ class WizardDialogKnowledgeTeacher(WizardOfWikipediaTeacher):
                 # if chosen_sent, add wizard response to dialog history
                 text += '{}\n'.format(wizard_prev_entry['text'])
             text += apprentice_entry['text']
+        
+        # get context
+        context = _get_context(d['dialog'], idx)
 
         # next, get label
         wizard_entry = d['dialog'][idx]
@@ -443,6 +452,7 @@ class WizardDialogKnowledgeTeacher(WizardOfWikipediaTeacher):
         action = {
             'id': 'WizardDialogKnowledgeTeacher',
             'text': text,
+            'context': context,
             'labels': labels,
             'chosen_topic': chosen_topic,
             'episode_done': episode_done,
