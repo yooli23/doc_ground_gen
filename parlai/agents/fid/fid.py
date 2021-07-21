@@ -21,6 +21,8 @@ from parlai.agents.rag.modules import RagModel, Document, T5RagModel
 from parlai.agents.rag.rag import RagAgent
 from parlai.agents.rag.model_types import RagToken, get_forced_decoder_inputs
 from parlai.utils.typing import TShared
+import os
+import csv
 
 
 class Fid(RagToken):
@@ -121,7 +123,16 @@ class FidModel(RagModel):
         enc_out, mask, input_turns_cnt, top_docs, top_doc_scores = super().encoder(
             input, input_lengths, query_vec, input_turns_cnt, positions, segments
         )  # type: ignore
-
+        # csv_path = os.path.join(os.environ["AMLT_OUTPUT_DIR"],"retrieved_passages.csv")
+        # with open(csv_path, 'a') as f:
+        #     writer = csv.writer(f)
+        #     for i in range(0, len(top_docs)):
+        #         data_row = []
+        #         for j in range(0, len(top_docs[i])):
+        #             data_row = data_row + [top_docs[i][j].get_id(), top_docs[i][j].get_title(), top_docs[i][j].get_text()]
+        #         writer.writerow(data_row)
+        #     f.close()
+        print("I am testing...")
         if input_turns_cnt is not None:
             # Input Turns is a tensor of dim [bsz]
             input = input.repeat_interleave(input_turns_cnt, dim=0)  # type: ignore

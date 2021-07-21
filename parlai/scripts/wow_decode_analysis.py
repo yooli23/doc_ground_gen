@@ -199,7 +199,7 @@ def _eval_single_world(opt, agent, task):
     save_data = {'episode_idx': list_episode_idx, 'topic': list_topic, 'last_sentence':list_last_sentence, 'context': list_context, 'checked_sentence': list_checked_sentence, 'eval_label':list_eval_label, 'generated_sentence':list_generated_sentence}
     saved_df = pd.DataFrame(save_data)
     # saved_df.to_csv("test.csv")
-    saved_df.to_csv(os.path.join(os.environ["AMLT_OUTPUT_DIR"],"test.csv"))
+    saved_df.to_csv(os.path.join(os.environ["AMLT_OUTPUT_DIR"],"new_test.csv"))
 
     if world_logger is not None:
         # dump world acts to file

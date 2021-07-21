@@ -18,6 +18,7 @@ docformatter==1.4
 docutils==0.15.2
 emoji==1.2.0
 faiss==1.5.3
+fairseq==0.10.2
 filelock==3.0.12
 flake8==3.8.3
 flake8-bugbear==20.1.4
